@@ -1,7 +1,3 @@
-
-import com.bitiverse.resources.test.RT2D;
-import javax.swing.JFrame;
-
 /*
  *                    BITIVERSE SOFTWARE DEVELOPMENT LICENSE EXTENSION
  *    Bitiverse is open-source software, which is largely licensed under the LGPL v3.
@@ -11,19 +7,27 @@ import javax.swing.JFrame;
  * 
  *    Some code in this project is in the public domain.
  */
+package com.bitiverse.resources.test;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
 /**
  *
  * @author luke
  */
-public class Loader {
-    public static void main(String[] str){
-        JFrame j = new JFrame("RT2D");
-        j.add(new RT2D());
-        j.pack();
-        j.setLocationRelativeTo(null);
-        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        j.setVisible(true);
+public class RT2D extends Component {
+    
+    public int w = 800, h = 600;
+    
+    public RT2D(){
+        this.setPreferredSize(new Dimension(w, h));
+        this.setSize(w, h);
     }
+
+    @Override
+    public void paint(Graphics g) {
+    }
+    
 }
