@@ -7,20 +7,16 @@
  * 
  *    Some code in this project is in the public domain.
  */
-package com.bitiverse.resources;
+package com.bitiverse.resources.sources;
+
+import com.bitiverse.resources.ResourceUser;
+import com.bitiverse.resources.Resources;
 
 /**
  *
  * @author luke
  */
-public class ResourceLink extends ResourceUser{
-    
-    public int thistype = 0, bandware = 0;
-
-    public ResourceLink(int type, int bandware){
-        thistype = type;
-        this.bandware = bandware;
-    }
+public class SolarPanel extends ResourceUser {
 
     @Override
     public int getResources(int type, int amount) {
@@ -29,7 +25,7 @@ public class ResourceLink extends ResourceUser{
     
     @Override
     public void run() {
-        if(buffer[thistype]<bandware*4)consumeResources(thistype, bandware);
+        buffer[Resources.TYPE_ELECTRICITY]++;
     }
     
 }

@@ -27,4 +27,17 @@ public abstract class ResourceUser implements Runnable {
         }
         buffer[type] += a;
     }
+    public int pullFromBuffer(int type, int amount){
+        int a = 0;
+        
+        if(buffer[type]>=amount) {
+            buffer[type]-= amount;
+            return amount;
+        }else{
+            a = buffer[type];
+            buffer[type] = 0;
+        }
+        
+        return a;
+    }
 }
