@@ -15,7 +15,7 @@ import com.bitiverse.resources.ResourceUser;
  *
  * @author luke
  */
-public class Void extends ResourceUser {
+public class ResourceVoid extends ResourceUser {
 
     @Override
     public void run() {

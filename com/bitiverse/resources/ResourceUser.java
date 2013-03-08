@@ -9,6 +9,7 @@
  */
 package com.bitiverse.resources;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,9 @@ import java.util.ArrayList;
  * @author luke
  */
 public abstract class ResourceUser implements Runnable {
+    
+    public int locx = 10, locy = 10; //used for this rendering test only (to be removed)
+    
     public int[] buffer = new int[64]; // 64 resource types (for now)
     public ArrayList<ResourceUser> connections = new ArrayList<>();
     public int getResources(int type, int amount){return 0;} //not a resource provider
