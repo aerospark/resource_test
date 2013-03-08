@@ -25,7 +25,7 @@ public class SolarPanel extends ResourceUser {
     
     @Override
     public void run() {
-        buffer[Resources.TYPE_ELECTRICITY]++;
+        if(buffer[Resources.TYPE_ELECTRICITY]<64)buffer[Resources.TYPE_ELECTRICITY]++;
     }
     
 }

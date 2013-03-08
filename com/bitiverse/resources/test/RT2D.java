@@ -10,6 +10,7 @@
 package com.bitiverse.resources.test;
 
 import com.bitiverse.resources.ResourceUser;
+import com.bitiverse.resources.Resources;
 import com.bitiverse.resources.buffers.WaterTower;
 import com.bitiverse.resources.consumers.ResourceVoid;
 import com.bitiverse.resources.processors.HardWaterFusionPlant;
@@ -21,6 +22,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +33,7 @@ public class RT2D extends Component {
     
     public int w = 800, h = 600;
     
-    Ellipse2D.Double circle = null;
+    Ellipse2D.Float circle = null;
     
     ArrayList<ResourceUser> users = new ArrayList<>();
     
@@ -51,9 +54,9 @@ public class RT2D extends Component {
         
         rvoid.locx = 120;
         rvoid.locy = h-30;
-        pump.locx = 60;
+        pump.locx = 120;
         pump.locy = 60;
-        pan.locx = 120;
+        pan.locx = 60;
         pan.locy = 70;
         tower.locx = 180;
         tower.locy = 80;
@@ -66,15 +69,42 @@ public class RT2D extends Component {
         users.add(plant);
         users.add(rvoid);
         
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        Thread.sleep(100);
+                        for(ResourceUser u : users){
+                            u.run();
+                        }
+                        repaint();
+                    } catch (InterruptedException ex) {
+                        break;
+                    }
+                }
+            }
+            
+        }).start();
+        
     }
+    
+    int idx = 0;
 
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(0,0,w,h);
-        g.setColor(Color.WHITE);
-        for(ResourceUser u : users){
+        for(ResourceUser u : users){    
+            idx = 0;
+            g.setColor(Color.WHITE);
             g.drawString(u.toString(), u.locx, u.locy);
+            for(int rad : u.buffer){
+                g.setColor(new Color(255-idx*4,idx*4,255-idx,42));
+                g.fillOval(u.locx-rad/4, u.locy-rad/4, rad/2, rad/2);
+                idx++;
+            }
         }
     }
     

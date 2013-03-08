@@ -21,7 +21,7 @@ public class ResourceVoid extends ResourceUser {
     public void run() {
         for(int i = 0; i < buffer.length; i++){
             buffer[i]-=32;
-            consumeResources(i, 32);
+            requestResources(i, 32);
         }
     }
     

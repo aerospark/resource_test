@@ -29,7 +29,7 @@ public class ResourceLink extends ResourceUser{
     
     @Override
     public void run() {
-        if(buffer[thistype]<bandware*4)consumeResources(thistype, bandware);
+        if(buffer[thistype]<bandware*4)requestResources(thistype, bandware);
     }
     
 }

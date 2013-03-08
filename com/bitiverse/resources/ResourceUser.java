@@ -23,7 +23,7 @@ public abstract class ResourceUser implements Runnable {
     public int[] buffer = new int[64]; // 64 resource types (for now)
     public ArrayList<ResourceUser> connections = new ArrayList<>();
     public int getResources(int type, int amount){return 0;} //not a resource provider
-    public void consumeResources(int type, int amount){
+    public void requestResources(int type, int amount){
         int a = 0;
         for(ResourceUser u : connections){
             a += u.getResources(type, amount-a);

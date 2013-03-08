@@ -20,7 +20,7 @@ public class BitcoinMiningFarm extends ResourceUser {
 
     @Override
     public void run() {
-        if(buffer[Resources.TYPE_ELECTRICITY]<1024) consumeResources(Resources.TYPE_ELECTRICITY, 128);
+        if(buffer[Resources.TYPE_ELECTRICITY]<1024) requestResources(Resources.TYPE_ELECTRICITY, 128);
         buffer[Resources.TYPE_ELECTRICITY]-=84;
     }
     

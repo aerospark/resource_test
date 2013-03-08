@@ -20,7 +20,14 @@ public class WaterPump extends ResourceUser{
 
     @Override
     public void run() {
-        if(buffer[Resources.TYPE_WATER]<1024)buffer[Resources.TYPE_WATER]+=32; // no water table yet
+        if(buffer[Resources.TYPE_ELECTRICITY]>4){
+            if(buffer[Resources.TYPE_WATER]<32){
+                buffer[Resources.TYPE_WATER]+=2;
+                buffer[Resources.TYPE_ELECTRICITY]--;
+            } // no water table yet
+        }else{
+            requestResources(Resources.TYPE_ELECTRICITY, 12);
+        }
     }
 
 }
