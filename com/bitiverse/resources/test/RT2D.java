@@ -67,7 +67,7 @@ public class RT2D extends Component {
         users.add(pump);
         users.add(tower);
         users.add(plant);
-        users.add(rvoid);
+//        users.add(rvoid);
         
         new Thread(new Runnable() {
 
@@ -96,14 +96,19 @@ public class RT2D extends Component {
     public void paint(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(0,0,w,h);
-        for(ResourceUser u : users){    
+        for(ResourceUser u : users){
             idx = 0;
             g.setColor(Color.WHITE);
             g.drawString(u.toString(), u.locx, u.locy);
             for(int rad : u.buffer){
-                g.setColor(new Color(255-idx*4,idx*4,255-idx,42));
+                g.setColor(new Color(255-idx*4,idx*4,255-idx,128));
                 g.fillOval(u.locx-rad/4, u.locy-rad/4, rad/2, rad/2);
                 idx++;
+            }
+            if(u.unrenderedsent>0){
+                u.unrenderedsent--;
+                g.setColor(Color.WHITE);
+                g.drawLine(u.locx, u.locy, u.lastsentx, u.lastsenty);
             }
         }
     }

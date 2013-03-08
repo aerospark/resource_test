@@ -20,7 +20,7 @@ public class WaterTower extends ResourceUser {
 
     @Override
     public void run() {
-        if(buffer[Resources.TYPE_WATER] < 4096)requestResources(Resources.TYPE_WATER, 128);
+        if(buffer[Resources.TYPE_WATER] < 4096)requestResources(Resources.TYPE_WATER, 12);
     }
     
 }

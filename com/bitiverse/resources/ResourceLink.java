@@ -23,8 +23,8 @@ public class ResourceLink extends ResourceUser{
     }
 
     @Override
-    public int getResources(int type, int amount) {
-        return pullFromBuffer(type, amount);
+    public int getResources(int type, int amount, int tox, int toy) {
+        return pullFromBuffer(type, amount, tox, toy);
     }
     
     @Override
