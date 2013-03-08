@@ -7,12 +7,20 @@
  * 
  *    Some code in this project is in the public domain.
  */
-package com.bitiverse.resources;
+package com.bitiverse.resources.sources;
+
+import com.bitiverse.resources.ResourceUser;
+import com.bitiverse.resources.Resources;
 
 /**
  *
  * @author luke
  */
-public class ResourceSource {
-    
+public class WaterPump extends ResourceUser{
+
+    @Override
+    public void run() {
+        if(buffer[Resources.TYPE_WATER]<1024)buffer[Resources.TYPE_WATER]+=32; // no water table yet
+    }
+
 }
